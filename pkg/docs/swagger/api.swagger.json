@@ -1,0 +1,159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "fileServe/fileServe.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "FileService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/files/move": {
+      "patch": {
+        "summary": "Move file",
+        "description": "Move a file to a new location.",
+        "operationId": "FileService_MoveFile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoOperationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FileService"
+        ]
+      }
+    },
+    "/v1/files/{fileName}": {
+      "delete": {
+        "summary": "Delete a file",
+        "description": "Deletes a file by name.",
+        "operationId": "FileService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FileService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protoFileChunk": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "format": "byte"
+        },
+        "fileName": {
+          "type": "string"
+        }
+      }
+    },
+    "protoOperationRequest": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        }
+      }
+    },
+    "protoStatus": {
+      "type": "string",
+      "enum": [
+        "STATUS_UNSPECIFIED",
+        "STATUS_SUCCESS",
+        "STATUS_ERROR"
+      ],
+      "default": "STATUS_UNSPECIFIED"
+    },
+    "protoStatusResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/protoStatus"
+        },
+        "errorMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    }
+  }
+}

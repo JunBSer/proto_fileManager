@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "./pkg/api/proto";
+
+service FileService {
+    rpc Upload(stream FileChunk) returns (StatusResponse);
+
+    rpc Download(FileRequest) returns (stream FileChunk);
+
+    rpc Delete(FileRequest) returns (StatusResponse) {
+        option (google.api.http) = {
+            delete: "/v1/files/{file_name}"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Delete a file",
+            description: "Deletes a file by name."
+        };
+    }
+
+    rpc Read(FileRequest) returns (stream FileChunk);
+
+    rpc OverwriteFile(stream FileChunk) returns (StatusResponse);
+
+    rpc Append(stream FileChunk) returns (StatusResponse);
+    
+    rpc MoveFile(OperationRequest) returns (StatusResponse) {
+        option (google.api.http) = {
+            patch: "/v1/files/move"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Move file",
+            description: "Move a file to a new location."
+        };
+    }
+}
+
+message StatusResponse {
+    Status status = 1;
+    string error_message = 2;
+}
+
+message FileRequest {
+    string file_name = 1;
+}
+
+message FileResponse {
+    string file_name = 1;
+    uint64 size = 2;
+}
+
+message FileChunk {
+    bytes content = 1;
+    string file_name = 2;
+}
+
+message OperationRequest {
+    string source = 1;
+    string destination = 2;
+}
+
+enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_ERROR = 2;
+}
