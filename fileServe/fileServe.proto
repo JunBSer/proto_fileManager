@@ -2,9 +2,6 @@ syntax = "proto3";
 
 package proto;
 
-import "google/api/annotations.proto";
-import "protoc-gen-openapiv2/options/annotations.proto";
-
 option go_package = "./pkg/api/proto";
 
 service FileService {
@@ -12,15 +9,7 @@ service FileService {
 
     rpc Download(FileRequest) returns (stream FileChunk);
 
-    rpc Delete(FileRequest) returns (StatusResponse) {
-        option (google.api.http) = {
-            delete: "/v1/files/{file_name}"
-        };
-        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-            summary: "Delete a file",
-            description: "Deletes a file by name."
-        };
-    }
+    rpc Delete(FileRequest) returns (StatusResponse) ;
 
     rpc Read(FileRequest) returns (stream FileChunk);
 
@@ -28,16 +17,7 @@ service FileService {
 
     rpc Append(stream FileChunk) returns (StatusResponse);
     
-    rpc MoveFile(OperationRequest) returns (StatusResponse) {
-        option (google.api.http) = {
-            patch: "/v1/files/move"
-            body: "*"
-        };
-        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-            summary: "Move file",
-            description: "Move a file to a new location."
-        };
-    }
+    rpc MoveFile(OperationRequest) returns (StatusResponse);
 }
 
 message StatusResponse {

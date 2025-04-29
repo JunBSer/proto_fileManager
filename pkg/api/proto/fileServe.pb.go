@@ -7,8 +7,6 @@
 package proto
 
 import (
-	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -328,7 +326,7 @@ var File_fileServe_fileServe_proto protoreflect.FileDescriptor
 
 const file_fileServe_fileServe_proto_rawDesc = "" +
 	"\n" +
-	"\x19fileServe/fileServe.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\\\n" +
+	"\x19fileServe/fileServe.proto\x12\x05proto\"\\\n" +
 	"\x0eStatusResponse\x12%\n" +
 	"\x06status\x18\x01 \x01(\x0e2\r.proto.StatusR\x06status\x12#\n" +
 	"\rerror_message\x18\x02 \x01(\tR\ferrorMessage\"*\n" +
@@ -346,15 +344,15 @@ const file_fileServe_fileServe_proto_rawDesc = "" +
 	"\x06Status\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eSTATUS_SUCCESS\x10\x01\x12\x10\n" +
-	"\fSTATUS_ERROR\x10\x022\x9c\x04\n" +
+	"\fSTATUS_ERROR\x10\x022\x88\x03\n" +
 	"\vFileService\x123\n" +
 	"\x06Upload\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x122\n" +
-	"\bDownload\x12\x12.proto.FileRequest\x1a\x10.proto.FileChunk0\x01\x12}\n" +
-	"\x06Delete\x12\x12.proto.FileRequest\x1a\x15.proto.StatusResponse\"H\x92A(\x12\rDelete a file\x1a\x17Deletes a file by name.\x82\xd3\xe4\x93\x02\x17*\x15/v1/files/{file_name}\x12.\n" +
+	"\bDownload\x12\x12.proto.FileRequest\x1a\x10.proto.FileChunk0\x01\x123\n" +
+	"\x06Delete\x12\x12.proto.FileRequest\x1a\x15.proto.StatusResponse\x12.\n" +
 	"\x04Read\x12\x12.proto.FileRequest\x1a\x10.proto.FileChunk0\x01\x12:\n" +
 	"\rOverwriteFile\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x123\n" +
-	"\x06Append\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x12\x83\x01\n" +
-	"\bMoveFile\x12\x17.proto.OperationRequest\x1a\x15.proto.StatusResponse\"G\x92A+\x12\tMove file\x1a\x1eMove a file to a new location.\x82\xd3\xe4\x93\x02\x13:\x01*2\x0e/v1/files/moveB\x11Z\x0f./pkg/api/protob\x06proto3"
+	"\x06Append\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x12:\n" +
+	"\bMoveFile\x12\x17.proto.OperationRequest\x1a\x15.proto.StatusResponseB\x11Z\x0f./pkg/api/protob\x06proto3"
 
 var (
 	file_fileServe_fileServe_proto_rawDescOnce sync.Once
