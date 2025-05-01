@@ -322,6 +322,146 @@ func (x *OperationRequest) GetDestination() string {
 	return ""
 }
 
+type DirectoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DirectoryRequest) Reset() {
+	*x = DirectoryRequest{}
+	mi := &file_fileServe_fileServe_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DirectoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DirectoryRequest) ProtoMessage() {}
+
+func (x *DirectoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_fileServe_fileServe_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DirectoryRequest.ProtoReflect.Descriptor instead.
+func (*DirectoryRequest) Descriptor() ([]byte, []int) {
+	return file_fileServe_fileServe_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DirectoryRequest) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+type DirectoryEntry struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	IsDir         bool                   `protobuf:"varint,2,opt,name=is_dir,json=isDir,proto3" json:"is_dir,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DirectoryEntry) Reset() {
+	*x = DirectoryEntry{}
+	mi := &file_fileServe_fileServe_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DirectoryEntry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DirectoryEntry) ProtoMessage() {}
+
+func (x *DirectoryEntry) ProtoReflect() protoreflect.Message {
+	mi := &file_fileServe_fileServe_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DirectoryEntry.ProtoReflect.Descriptor instead.
+func (*DirectoryEntry) Descriptor() ([]byte, []int) {
+	return file_fileServe_fileServe_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DirectoryEntry) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DirectoryEntry) GetIsDir() bool {
+	if x != nil {
+		return x.IsDir
+	}
+	return false
+}
+
+type DirectoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Entries       []*DirectoryEntry      `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DirectoryResponse) Reset() {
+	*x = DirectoryResponse{}
+	mi := &file_fileServe_fileServe_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DirectoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DirectoryResponse) ProtoMessage() {}
+
+func (x *DirectoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_fileServe_fileServe_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DirectoryResponse.ProtoReflect.Descriptor instead.
+func (*DirectoryResponse) Descriptor() ([]byte, []int) {
+	return file_fileServe_fileServe_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DirectoryResponse) GetEntries() []*DirectoryEntry {
+	if x != nil {
+		return x.Entries
+	}
+	return nil
+}
+
 var File_fileServe_fileServe_proto protoreflect.FileDescriptor
 
 const file_fileServe_fileServe_proto_rawDesc = "" +
@@ -340,11 +480,18 @@ const file_fileServe_fileServe_proto_rawDesc = "" +
 	"\tfile_name\x18\x02 \x01(\tR\bfileName\"L\n" +
 	"\x10OperationRequest\x12\x16\n" +
 	"\x06source\x18\x01 \x01(\tR\x06source\x12 \n" +
-	"\vdestination\x18\x02 \x01(\tR\vdestination*F\n" +
+	"\vdestination\x18\x02 \x01(\tR\vdestination\"&\n" +
+	"\x10DirectoryRequest\x12\x12\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\";\n" +
+	"\x0eDirectoryEntry\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x15\n" +
+	"\x06is_dir\x18\x02 \x01(\bR\x05isDir\"D\n" +
+	"\x11DirectoryResponse\x12/\n" +
+	"\aentries\x18\x01 \x03(\v2\x15.proto.DirectoryEntryR\aentries*F\n" +
 	"\x06Status\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eSTATUS_SUCCESS\x10\x01\x12\x10\n" +
-	"\fSTATUS_ERROR\x10\x022\x88\x03\n" +
+	"\fSTATUS_ERROR\x10\x022\xcc\x03\n" +
 	"\vFileService\x123\n" +
 	"\x06Upload\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x122\n" +
 	"\bDownload\x12\x12.proto.FileRequest\x1a\x10.proto.FileChunk0\x01\x123\n" +
@@ -352,7 +499,8 @@ const file_fileServe_fileServe_proto_rawDesc = "" +
 	"\x04Read\x12\x12.proto.FileRequest\x1a\x10.proto.FileChunk0\x01\x12:\n" +
 	"\rOverwriteFile\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x123\n" +
 	"\x06Append\x12\x10.proto.FileChunk\x1a\x15.proto.StatusResponse(\x01\x12:\n" +
-	"\bMoveFile\x12\x17.proto.OperationRequest\x1a\x15.proto.StatusResponseB\x11Z\x0f./pkg/api/protob\x06proto3"
+	"\bMoveFile\x12\x17.proto.OperationRequest\x1a\x15.proto.StatusResponse\x12B\n" +
+	"\rListDirectory\x12\x17.proto.DirectoryRequest\x1a\x18.proto.DirectoryResponseB\x11Z\x0f./pkg/api/protob\x06proto3"
 
 var (
 	file_fileServe_fileServe_proto_rawDescOnce sync.Once
@@ -367,36 +515,42 @@ func file_fileServe_fileServe_proto_rawDescGZIP() []byte {
 }
 
 var file_fileServe_fileServe_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_fileServe_fileServe_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_fileServe_fileServe_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_fileServe_fileServe_proto_goTypes = []any{
-	(Status)(0),              // 0: proto.Status
-	(*StatusResponse)(nil),   // 1: proto.StatusResponse
-	(*FileRequest)(nil),      // 2: proto.FileRequest
-	(*FileResponse)(nil),     // 3: proto.FileResponse
-	(*FileChunk)(nil),        // 4: proto.FileChunk
-	(*OperationRequest)(nil), // 5: proto.OperationRequest
+	(Status)(0),               // 0: proto.Status
+	(*StatusResponse)(nil),    // 1: proto.StatusResponse
+	(*FileRequest)(nil),       // 2: proto.FileRequest
+	(*FileResponse)(nil),      // 3: proto.FileResponse
+	(*FileChunk)(nil),         // 4: proto.FileChunk
+	(*OperationRequest)(nil),  // 5: proto.OperationRequest
+	(*DirectoryRequest)(nil),  // 6: proto.DirectoryRequest
+	(*DirectoryEntry)(nil),    // 7: proto.DirectoryEntry
+	(*DirectoryResponse)(nil), // 8: proto.DirectoryResponse
 }
 var file_fileServe_fileServe_proto_depIdxs = []int32{
-	0, // 0: proto.StatusResponse.status:type_name -> proto.Status
-	4, // 1: proto.FileService.Upload:input_type -> proto.FileChunk
-	2, // 2: proto.FileService.Download:input_type -> proto.FileRequest
-	2, // 3: proto.FileService.Delete:input_type -> proto.FileRequest
-	2, // 4: proto.FileService.Read:input_type -> proto.FileRequest
-	4, // 5: proto.FileService.OverwriteFile:input_type -> proto.FileChunk
-	4, // 6: proto.FileService.Append:input_type -> proto.FileChunk
-	5, // 7: proto.FileService.MoveFile:input_type -> proto.OperationRequest
-	1, // 8: proto.FileService.Upload:output_type -> proto.StatusResponse
-	4, // 9: proto.FileService.Download:output_type -> proto.FileChunk
-	1, // 10: proto.FileService.Delete:output_type -> proto.StatusResponse
-	4, // 11: proto.FileService.Read:output_type -> proto.FileChunk
-	1, // 12: proto.FileService.OverwriteFile:output_type -> proto.StatusResponse
-	1, // 13: proto.FileService.Append:output_type -> proto.StatusResponse
-	1, // 14: proto.FileService.MoveFile:output_type -> proto.StatusResponse
-	8, // [8:15] is the sub-list for method output_type
-	1, // [1:8] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0,  // 0: proto.StatusResponse.status:type_name -> proto.Status
+	7,  // 1: proto.DirectoryResponse.entries:type_name -> proto.DirectoryEntry
+	4,  // 2: proto.FileService.Upload:input_type -> proto.FileChunk
+	2,  // 3: proto.FileService.Download:input_type -> proto.FileRequest
+	2,  // 4: proto.FileService.Delete:input_type -> proto.FileRequest
+	2,  // 5: proto.FileService.Read:input_type -> proto.FileRequest
+	4,  // 6: proto.FileService.OverwriteFile:input_type -> proto.FileChunk
+	4,  // 7: proto.FileService.Append:input_type -> proto.FileChunk
+	5,  // 8: proto.FileService.MoveFile:input_type -> proto.OperationRequest
+	6,  // 9: proto.FileService.ListDirectory:input_type -> proto.DirectoryRequest
+	1,  // 10: proto.FileService.Upload:output_type -> proto.StatusResponse
+	4,  // 11: proto.FileService.Download:output_type -> proto.FileChunk
+	1,  // 12: proto.FileService.Delete:output_type -> proto.StatusResponse
+	4,  // 13: proto.FileService.Read:output_type -> proto.FileChunk
+	1,  // 14: proto.FileService.OverwriteFile:output_type -> proto.StatusResponse
+	1,  // 15: proto.FileService.Append:output_type -> proto.StatusResponse
+	1,  // 16: proto.FileService.MoveFile:output_type -> proto.StatusResponse
+	8,  // 17: proto.FileService.ListDirectory:output_type -> proto.DirectoryResponse
+	10, // [10:18] is the sub-list for method output_type
+	2,  // [2:10] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_fileServe_fileServe_proto_init() }
@@ -410,7 +564,7 @@ func file_fileServe_fileServe_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fileServe_fileServe_proto_rawDesc), len(file_fileServe_fileServe_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

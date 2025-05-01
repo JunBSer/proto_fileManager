@@ -18,6 +18,8 @@ service FileService {
     rpc Append(stream FileChunk) returns (StatusResponse);
     
     rpc MoveFile(OperationRequest) returns (StatusResponse);
+
+     rpc ListDirectory(DirectoryRequest) returns (DirectoryResponse);
 }
 
 message StatusResponse {
@@ -42,6 +44,20 @@ message FileChunk {
 message OperationRequest {
     string source = 1;
     string destination = 2;
+}
+
+
+message DirectoryRequest {
+  string path = 1;
+}
+
+message DirectoryEntry {
+  string name = 1;
+  bool is_dir = 2;
+}
+
+message DirectoryResponse {
+  repeated DirectoryEntry entries = 1;
 }
 
 enum Status {
