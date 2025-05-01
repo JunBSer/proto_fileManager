@@ -19,7 +19,7 @@ service FileService {
     
     rpc MoveFile(OperationRequest) returns (StatusResponse);
 
-     rpc ListDirectory(DirectoryRequest) returns (DirectoryResponse);
+    rpc ListDirectory(DirectoryRequest) returns (DirectoryResponse);
 }
 
 message StatusResponse {
