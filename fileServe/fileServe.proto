@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "./pkg/api/proto";
+option go_package = "github.com/JunBSer/proto_fileManager/pkg/api/proto;proto";
 
 service FileService {
     rpc Upload(stream FileChunk) returns (StatusResponse);
